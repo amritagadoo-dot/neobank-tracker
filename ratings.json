@@ -1,1 +1,34 @@
 
+{
+  "lastUpdated": "2026-05-21",
+  "apps": [
+    {
+      "name": "Chime",
+      "category": "Neobank",
+      "iosRating": 4.8,
+      "androidRating": 4.7,
+      "overallRating": 4.75
+    },
+    {
+      "name": "Dave",
+      "category": "Fintech banking app",
+      "iosRating": 4.8,
+      "androidRating": 4.6,
+      "overallRating": 4.7
+    },
+    {
+      "name": "SoFi",
+      "category": "Digital finance app",
+      "iosRating": 4.6,
+      "androidRating": 4.6,
+      "overallRating": 4.6
+    },
+    {
+      "name": "Cash App",
+      "category": "Payments and finance app",
+      "iosRating": 4.8,
+      "androidRating": 4.5,
+      "overallRating": 4.65
+    }
+  ]
+}
