@@ -1,90 +1,326 @@
+
+   
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Top 20 Neobank Apps Tracker</title>
+  <title>Neobank App Tracker</title>
   <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #16202a;
+      --muted: #5e6b78;
+      --line: #d9e2ec;
+      --primary: #0f766e;
+      --primary-soft: #dff6f3;
+      --accent: #2563eb;
+      --star: #f59e0b;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 40px 20px;
-      background: #f7f7f7;
-      color: #222;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 40%, #f4f7fb 100%);
+      color: var(--text);
     }
-    .container {
-      max-width: 1000px;
+
+    .wrap {
+      max-width: 1180px;
       margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f766e 0%, #2563eb 100%);
+      color: white;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 2.2rem;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 700px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .pill {
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid #edf2f7;
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 1.25rem;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    .rating-block {
+      margin: 12px 0;
+    }
+
+    .rating-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 54px;
+      gap: 10px;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .bar {
+      height: 10px;
+      background: #e7eef5;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--star), #fbbf24);
+      border-radius: 999px;
+    }
+
+    .score {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin: 12px 0 14px;
+    }
+
+    .watchlist {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .mini {
       background: white;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
     }
-    h1 {
-      margin-top: 0;
+
+    .mini strong {
+      display: block;
+      margin-bottom: 6px;
     }
-    p {
-      color: #555;
-    }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
     }
+
     th, td {
-      border: 1px solid #ddd;
-      padding: 12px;
+      padding: 14px;
+      border-bottom: 1px solid #edf2f7;
       text-align: left;
       vertical-align: top;
+      font-size: 0.95rem;
     }
+
     th {
-      background: #f0f0f0;
+      background: #f8fafc;
     }
-    tr:nth-child(even) {
-      background: #fafafa;
+
+    tr:last-child td {
+      border-bottom: none;
     }
-    a {
-      color: #0b63ce;
+
+    .note {
+      color: var(--muted);
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 1.7rem; }
+      .rating-row { grid-template-columns: 65px 1fr 44px; }
+      th, td { font-size: 0.88rem; padding: 10px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Top 20 Neobank Apps Tracker</h1>
-    <p>This page tracks 20 neobank and fintech banking apps for research and comparison.</p>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Top 20 Neobank & Fintech App Tracker</h1>
+      <p>A shareable research page covering leading banking-style apps, with featured app-store ratings for core apps and a watchlist for the broader market.</p>
+      <div class="meta">
+        <span class="pill">20 apps tracked</span>
+        <span class="pill">Featured: Dave, Chime, SoFi, Cash App</span>
+        <span class="pill">Built for GitHub Pages</span>
+      </div>
+    </section>
 
+    <h2 class="section-title">Featured apps</h2>
+    <section class="grid">
+      <article class="card">
+        <h3>Chime</h3>
+        <div class="sub">Neobank</div>
+        <div class="rating-block">
+          <div class="rating-row">
+            <div>iOS</div>
+            <div class="bar"><div class="fill" style="width: 96%;"></div></div>
+            <div class="score">4.8</div>
+          </div>
+          <div class="rating-row">
+            <div>Android</div>
+            <div class="bar"><div class="fill" style="width: 94%;"></div></div>
+            <div class="score">4.7</div>
+          </div>
+        </div>
+        <div class="tag">Strong ratings on both stores</div>
+      </article>
+
+      <article class="card">
+        <h3>Dave</h3>
+        <div class="sub">Fintech banking app</div>
+        <div class="rating-block">
+          <div class="rating-row">
+            <div>iOS</div>
+            <div class="bar"><div class="fill" style="width: 96%;"></div></div>
+            <div class="score">4.8</div>
+          </div>
+          <div class="rating-row">
+            <div>Android</div>
+            <div class="bar"><div class="fill" style="width: 70%; background: #cbd5e1;"></div></div>
+            <div class="score">TBD</div>
+          </div>
+        </div>
+        <div class="tag">Add official Android score next</div>
+      </article>
+
+      <article class="card">
+        <h3>SoFi</h3>
+        <div class="sub">Digital finance super app</div>
+        <div class="rating-block">
+          <div class="rating-row">
+            <div>iOS</div>
+            <div class="bar"><div class="fill" style="width: 70%; background: #cbd5e1;"></div></div>
+            <div class="score">TBD</div>
+          </div>
+          <div class="rating-row">
+            <div>Android</div>
+            <div class="bar"><div class="fill" style="width: 70%; background: #cbd5e1;"></div></div>
+            <div class="score">TBD</div>
+          </div>
+        </div>
+        <div class="tag">Official iOS and Android listings found</div>
+      </article>
+
+      <article class="card">
+        <h3>Cash App</h3>
+        <div class="sub">Payments and finance app</div>
+        <div class="rating-block">
+          <div class="rating-row">
+            <div>iOS</div>
+            <div class="bar"><div class="fill" style="width: 96%;"></div></div>
+            <div class="score">4.8</div>
+          </div>
+          <div class="rating-row">
+            <div>Android</div>
+            <div class="bar"><div class="fill" style="width: 70%; background: #cbd5e1;"></div></div>
+            <div class="score">TBD</div>
+          </div>
+        </div>
+        <div class="tag">Add Android score next</div>
+      </article>
+    </section>
+
+    <h2 class="section-title">Top 20 watchlist</h2>
+    <section class="watchlist">
+      <div class="mini"><strong>1. Chime</strong>Mobile-first banking</div>
+      <div class="mini"><strong>2. Dave</strong>Cash advance and money tools</div>
+      <div class="mini"><strong>3. SoFi</strong>Banking, investing, loans</div>
+      <div class="mini"><strong>4. Cash App</strong>Payments and money tools</div>
+      <div class="mini"><strong>5. Albert</strong>Budgeting and banking</div>
+      <div class="mini"><strong>6. MoneyLion</strong>Banking and cash back</div>
+      <div class="mini"><strong>7. Varo</strong>US digital bank</div>
+      <div class="mini"><strong>8. Current</strong>Mobile banking</div>
+      <div class="mini"><strong>9. Aspiration</strong>Money app with sustainability angle</div>
+      <div class="mini"><strong>10. Revolut</strong>Global money app</div>
+      <div class="mini"><strong>11. Monzo</strong>Digital bank</div>
+      <div class="mini"><strong>12. N26</strong>Digital banking brand</div>
+      <div class="mini"><strong>13. bunq</strong>European neobank</div>
+      <div class="mini"><strong>14. Starling Bank</strong>UK digital bank</div>
+      <div class="mini"><strong>15. Nubank</strong>Large Latin American neobank</div>
+      <div class="mini"><strong>16. Wise</strong>Cross-border money app</div>
+      <div class="mini"><strong>17. Klarna</strong>Payments and consumer finance</div>
+      <div class="mini"><strong>18. Step</strong>Youth-focused money app</div>
+      <div class="mini"><strong>19. Stash</strong>Investing and personal finance</div>
+      <div class="mini"><strong>20. Oportun</strong>Credit and savings products</div>
+    </section>
+
+    <h2 class="section-title">Detail view</h2>
     <table>
       <thead>
         <tr>
-          <th>#</th>
           <th>App</th>
           <th>Category</th>
-          <th>Notes</th>
+          <th>iOS rating</th>
+          <th>Android rating</th>
+          <th>Research note</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>1</td><td>Chime</td><td>Neobank</td><td>Mobile-first banking app</td></tr>
-        <tr><td>2</td><td>Dave</td><td>Fintech banking app</td><td>Known for cash advance features</td></tr>
-        <tr><td>3</td><td>SoFi</td><td>Digital finance app</td><td>Banking, investing, loans</td></tr>
-        <tr><td>4</td><td>Cash App</td><td>Payments/finance app</td><td>Money movement and financial tools</td></tr>
-        <tr><td>5</td><td>Albert</td><td>Fintech banking app</td><td>Budgeting and money tools</td></tr>
-        <tr><td>6</td><td>MoneyLion</td><td>Fintech banking app</td><td>Consumer finance app</td></tr>
-        <tr><td>7</td><td>Varo</td><td>Neobank</td><td>US digital bank</td></tr>
-        <tr><td>8</td><td>Current</td><td>Neobank</td><td>Younger-user focused banking app</td></tr>
-        <tr><td>9</td><td>Aspiration</td><td>Neobank</td><td>Sustainability-focused finance app</td></tr>
-        <tr><td>10</td><td>Revolut</td><td>Global neobank</td><td>Multi-currency financial app</td></tr>
-        <tr><td>11</td><td>Monzo</td><td>Neobank</td><td>Well-known UK digital bank</td></tr>
-        <tr><td>12</td><td>N26</td><td>Neobank</td><td>European digital banking brand</td></tr>
-        <tr><td>13</td><td>bunq</td><td>Neobank</td><td>European digital bank</td></tr>
-        <tr><td>14</td><td>Starling Bank</td><td>Neobank</td><td>UK digital bank</td></tr>
-        <tr><td>15</td><td>Nubank</td><td>Neobank</td><td>Large Latin American digital bank</td></tr>
-        <tr><td>16</td><td>Wise</td><td>Multi-currency finance app</td><td>Cross-border money focus</td></tr>
-        <tr><td>17</td><td>Klarna</td><td>Fintech app</td><td>Payments and broader finance products</td></tr>
-        <tr><td>18</td><td>Step</td><td>Banking app</td><td>Youth-focused money app</td></tr>
-        <tr><td>19</td><td>Stash</td><td>Finance app</td><td>Investing and personal finance tools</td></tr>
-        <tr><td>20</td><td>Oportun</td><td>Finance app</td><td>Credit and savings products</td></tr>
-      </tbody>
-    </table>
-  </div>
-</body>
-</html>
+        <tr><td>Chime</td><td>Neobank</td><td>4.8</td><td>4.7</td><td>Good starting benchmark because both ratings are confirmed.</td></tr>
+        <tr><td>Dave</td><td>Fintech banking app</td>
