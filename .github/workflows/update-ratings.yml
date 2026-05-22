@@ -1,1 +1,38 @@
 
+name: Update ratings data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 15 * * *'
+
+jobs:
+  update-ratings:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Update ratings file date
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import date
+
+          with open("ratings.json", "r") as f:
+              data = json.load(f)
+
+          data["lastUpdated"] = str(date.today())
+
+          with open("ratings.json", "w") as f:
+              json.dump(data, f, indent=2)
+          PY
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ratings.json
+          git diff --cached --quiet || git commit -m "Auto-update ratings data"
+          git push
